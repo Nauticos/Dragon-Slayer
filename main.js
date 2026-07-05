@@ -71,6 +71,12 @@ const enemyTemplates = [
 ];
 const bossEnemies = ["Fafnir the Plunderer"];
 
+const lines = [
+  "The wind howls through the trees.",
+  "You hear a distant roar echo from the deep woods...",
+  "You tighten the grip on your sword...",
+];
+
 let player = {
     name: "Hero",
     hp: 50,
@@ -284,16 +290,28 @@ function explore() {
   refreshEnemyUI();
   if (bossEnemies.includes(enemy.name)) {
     clearButtons();
-    pushLog(`You hear a low rumbling...`);
+    pushLog(`You hear a low rumble...`);
+    shake(5);
+    wait(1, () => {
+      pushLog(`Wait a second...`);
+      shake(5);
+    });
+     wait(2, () => {
+      pushLog(`It's getting closer!`);
+      shake(5);
+    });
     wait(3, () => {
       pushLog(`${enemy.name} appears at last! (${enemy.maxHP} HP)`);
       shake(5);
       refreshButtons();
     });
   } else {
-  pushLog(`A wild ${enemy.name} appears! (${enemy.maxHP} HP)`);
-  refreshButtons();
-  }
+    pushLog(lines[enemyNumber]);
+    wait(1, () => {
+      pushLog(`A wild ${enemy.name} appears! (${enemy.maxHP} HP)`);
+      refreshButtons();
+    });
+  }}
   if (bossEnemies.includes(enemy.name)) {
     add([
       rect(gameWidth, gameHeight),
@@ -321,7 +339,6 @@ function explore() {
       shake(5);
     });
   }
-}
 
 function spawnDamageText(x, y, amount, isCrit = false) {
   const dmgLabel = add([
