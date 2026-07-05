@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Dragon Slayer
+        </title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                background: #0b0b14;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                font-family: 'Courier New', monospace;
+            }
+            canvas {
+                image-rendering: pixelated;
+            }
+            #nameOverlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(11, 11, 18, 0.92);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                font-family: 'Courier New', monospace;
+            }
+            #nameOverlay h1 {
+                color: #ffdc78;
+                font-size: 22px;
+                margin-bottom: 24px;
+                letter-spacing: 1px;
+            }
+            #nameInput {
+                font-family: 'Courier New', monospace;
+                font-size: 18px;
+                padding: 10px 14px;
+                width: 260px;
+                background: #1a1a28;
+                border: 2px solid #5a5a78;
+                border-radius: 6px;
+                color: #eaeaf0;
+                text-align: center;
+                outline: none;
+                margin-bottom: 16px;
+            }
+            #nameInput:focus {
+                border-color: #ffdc78;
+            }
+            #nameSubmit {
+                font-family: 'Courier New', monospace;
+                font-size: 16px;
+                padding: 10px 28px;
+                background: #4666c8;
+                border: none;
+                border-radius: 6px;
+                color: white;
+                cursor: pointer;
+            }
+            #nameSubmit:hover {
+                background: #5a7ae0;
+            }
+            #gameWrap {
+                position: relative;
+                width: 640px;
+                height: 480px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="gameWrap">
+            <div id="nameOverlay">
+                <h1>PLEASE ENTER YOUR NAME</h1>
+                <input id="nameInput" type="text" maxlength="16" placeholder="Adventurer" autofocus />
+                <button id="nameSubmit">BEGIN ADVENTURE</button>
+             </div>
+        </div>
+
+        <script src="https://unpkg.com/kaplay@3001.0.0-alpha.20/dist/kaplay.js"></script>
+
+        <script src="./main.js"></script>
+    </body>
+</html>
